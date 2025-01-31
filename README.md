@@ -28,31 +28,7 @@ availability, and booking records
 
 ### This is the Project Structure
 
-│
-├── app/
-│   ├── __init__.py
-│   ├── auth/
-│   │   ├── __init__.py
-│   │   ├── routes.py
-│   │   └── models.py
-│   ├── booking/
-│   │   ├── __init__.py
-│   │   ├── routes.py
-│   │   └── models.py
-│   ├── templates/
-│   │   ├── auth/
-│   │   │   ├── login.html
-│   │   │   └── register.html
-│   │   └── booking/
-│   │       ├── index.html
-│   │       ├── availability.html
-│   │       └── booking_form.html
-│   
-├── config.py
-├── requirements.txt
-└── run.py
-├── init_db.py
-
+![Alt Text](prjt_structure.png)
 
 Here's a general overview from each section (what is it and how does it work?):
 
