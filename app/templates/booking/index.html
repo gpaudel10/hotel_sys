@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Booking</title>
+</head>
+<body>
+    <h1>Welcome to Hotel Booking System</h1>
+    {% if current_user.is_authenticated %}
+        <p>Welcome, {{ current_user.username }}! | <a href="{{ url_for('auth.logout') }}">Logout</a></p>
+    {% endif %}
+    
+    <div class="search-form">
+        <h2>Check Room Availability</h2>
+        <form action="{{ url_for('booking.check_availability') }}" method="GET">
+            <div>
+                <label for="check_in">Check-in Date:</label>
+                <input type="date" id="check_in" name="check_in" required>
+            </div>
+            <div>
+                <label for="check_out">Check-out Date:</label>
+                <input type="date" id="check_out" name="check_out" required>
+            </div>
+            <button type="submit">Check Availability</button>
+        </form>
+    </div>
+    
+    <div>
+        <h2>My Bookings</h2>
+        <a href="{{ url_for('booking.my_bookings') }}">View My Bookings</a>
+    </div>
+</body>
+</html>
