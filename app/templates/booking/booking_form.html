@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Room</title>
+</head>
+<body>
+    <h1>Complete Your Booking</h1>
+    
+    <div class="booking-details">
+        <h2>Booking Details</h2>
+        <p>Room: {{ room.room_number }} ({{ room.room_type }})</p>
+        <p>Check-in: {{ check_in }}</p>
+        <p>Check-out: {{ check_out }}</p>
+        <p>Total Price: ${{ total_price }}</p>
+    </div>
+
+    <form action="{{ url_for('booking.book_room') }}" method="POST">
+        <input type="hidden" name="room_id" value="{{ room.id }}">
+        <input type="hidden" name="check_in" value="{{ check_in }}">
+        <input type="hidden" name="check_out" value="{{ check_out }}">
+        
+        <!-- Payment details would go here in a real application -->
+        <button type="submit">Confirm Booking</button>
+    </form>
+
+    <p><a href="{{ url_for('booking.check_availability') }}?check_in={{ check_in }}&check_out={{ check_out }}">Back to Available Rooms</a></p>
+</body>
+</html>

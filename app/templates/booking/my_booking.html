@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Bookings</title>
+</head>
+<body>
+    <h1>My Bookings</h1>
+
+    {% for booking in bookings %}
+        <div class="booking-card">
+            <h3>Booking #{{ booking.id }}</h3>
+            <p>Room: {{ booking.room.room_number }} ({{ booking.room.room_type }})</p>
+            <p>Check-in: {{ booking.check_in_date }}</p>
+            <p>Check-out: {{ booking.check_out_date }}</p>
+            <p>Total Price: ${{ booking.total_price }}</p>
+            <p>Status: {{ booking.status }}</p>
+            
+            {% if booking.status == 'confirmed' %}
+                <form action="{{ url_for('booking.cancel_booking', booking_id=booking.id) }}" method="POST">
+                    <button type="submit">Cancel Booking</button>
+                </form>
+            {% endif %}
+        </div>
+    {% else %}
+        <p>You have no bookings yet.</p>
+    {% endfor %}
+
+    <p><a href="{{ url_for('booking.index') }}">Back to Home</a></p>
+</body>
+</html>
