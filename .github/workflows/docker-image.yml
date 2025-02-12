@@ -23,15 +23,10 @@ jobs:
     - name: Set Image Tag
       run: echo "IMAGE_TAG=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
 
-    - name: Build the Docker image
+    - name: Build the Docker image (timestamp tag only)
       run: |
-        docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/gp_flask_docker:latest \
-                     -t ${{ secrets.DOCKER_HUB_USERNAME }}/gp_flask_docker:$IMAGE_TAG .
+        docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/gp_flask_docker:$IMAGE_TAG .
 
-    - name: Push the Docker image
+    - name: Push the Docker image (timestamp tag only)
       run: |
-        docker push ${{ secrets.DOCKER_HUB_USERNAME }}/gp_flask_docker:latest
         docker push ${{ secrets.DOCKER_HUB_USERNAME }}/gp_flask_docker:$IMAGE_TAG
-
-    - name: Output Image Tag
-      run: echo "Pushed Docker image with tag: $IMAGE_TAG"
